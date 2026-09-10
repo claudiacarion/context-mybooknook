@@ -11,7 +11,7 @@ const Genres = () => {
         {genres.map((genre, index) => (
           <div key={index}>
             <Link href={`/genres/${genre.value}`}>
-              <p className="cursor-pointer text-ink bg-pink rounded rounded-br-3xl text-center py-4 my-4 md:my-0">{genre.label}</p>
+              <p className="cursor-pointer text-ink bg-pink rounded rounded-br-3xl text-center py-4 my-4 w-90 md:my-0">{genre.label}</p>
             </Link>
           </div>
         ))}
