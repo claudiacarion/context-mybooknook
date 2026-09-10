@@ -10,7 +10,7 @@ import Footer from "../Footer";
 const LoginWrapper = ({ children }: { children: ReactNode }) => {
   const { user } = useUserContext() as UserContextType;
   return (
-    <div className={`min-h-screen flex flex-col ${!user ? "bg-[url('/bg.jpeg')] bg-cover bg-position-[55%_center] md:bg-center" : ""}`}>
+    <div className={`min-h-screen flex flex-col ${!user ? "bg-[url('/bg.jpeg')] bg-cover bg-position-[75%_center] md:bg-center" : ""}`}>
       {user ? (
         <>
           <Header />
