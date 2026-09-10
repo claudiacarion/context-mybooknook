@@ -48,7 +48,7 @@ export default function Home() {
           <h3 className="text-ink">Ready for new read?</h3>
         </div>
       )}
-      <h4 className="text-peach font-heading text-[24px] px-4">
+      <h4 className="text-peach font-heading text-[24px] px-6">
         How about this one from{" "}
         {selectedGenre
           .replaceAll("_", " ")
