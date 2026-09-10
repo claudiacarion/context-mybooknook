@@ -46,9 +46,9 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
               height={360}
               className="w-60 h-90 object-cover m-auto rounded"
             />
-            <h3 className="text-peach font-heading text-[18px]">Author(s)</h3>
             {authors.length > 0 && (
               <div>
+                <h3 className="text-peach font-heading text-[18px]">Author(s)</h3>
                 {authors.map(author => (
                   <p key={author}>{author}</p>
                 ))}
