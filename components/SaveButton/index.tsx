@@ -19,7 +19,7 @@ const SaveButton = ({ id, title, author, cover }: BookCardType) => {
   };
 
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} className='w-fit mx-auto'>
       {user && user.books.find(book => book.id === id) ? (
         <FontAwesomeIcon icon={faHeart} className="text-pink text-[24px] hover:scale-95 cursor-pointer" />
       ) : (
