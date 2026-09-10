@@ -39,6 +39,7 @@ export default function Home() {
   }, [user]);
 
   const displayGenre = selectedGenre
+    .replace("childrens", "children's")
     .replaceAll("_", " ")
     .split(" ")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -54,7 +55,7 @@ export default function Home() {
           <h3 className="text-ink">Ready for new read?</h3>
         </div>
       )}
-      <h4 className="text-peach font-heading text-[24px] px-6">How about this one from {displayGenre}?</h4>
+      <h4 className="text-peach font-heading text-[24px] px-6">How about this one from {displayGenre} books?</h4>
       {book && <BookCard {...book} />}
     </div>
   );
