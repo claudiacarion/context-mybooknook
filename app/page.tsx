@@ -32,7 +32,7 @@ export default function Home() {
       console.log(error);
     }
   };
-
+  
   useEffect(() => {
     if (!user) return;
     fetchRandomBook();
