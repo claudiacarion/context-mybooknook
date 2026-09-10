@@ -1,0 +1,43 @@
+import BookCard from "@/components/BookCard";
+import { BookCardType, GenreBookType } from "@/data/types";
+
+const GenrePage = async ({ params }: { params: { genre: string } }) => {
+  const { genre } = await params;
+
+  const subject = genre.toLowerCase().replaceAll(" ", "_");
+
+  let books: BookCardType[] = [];
+
+  try {
+    const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/subjects/${subject}.json`;
+    const response = await fetch(url);
+    const data: { works: GenreBookType[] } = await response.json();
+    books = data.works.map(book => ({
+      id: book.key.replace("/works/", ""),
+      title: book.title,
+      author: book.authors?.map(author => author.name) ?? ["Unknown"],
+      cover: book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : "/no-image.png",
+    }));
+  } catch (error) {
+    console.log(error);
+  }
+
+  const displayGenre = genre
+    .replaceAll("_", " ")
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return (
+    <>
+      <h1 className="text-sage-dark font-heading text-[32px] text-center p-4 mb-2">Books from {displayGenre}</h1>
+      <div className='md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8'>
+        {books.map(book => (
+          <BookCard key={book.id} {...book} />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default GenrePage;

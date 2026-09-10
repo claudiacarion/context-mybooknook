@@ -1,0 +1,81 @@
+import { useUserContext } from "@/contexts/userContext";
+import { UserContextType } from "@/data/types";
+import { SetStateAction, useState } from "react";
+import { users } from "@/data/users";
+import Image from "next/image";
+
+const Login = () => {
+  const { user, setUser } = useUserContext() as UserContextType;
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  const handleUsername = (e: { target: { value: SetStateAction<string> } }) => {
+    setUsername(e.target.value);
+    setError("");
+  };
+
+  const handlePassword = (e: { target: { value: SetStateAction<string> } }) => {
+    setPassword(e.target.value);
+    setError("");
+  };
+
+  const handleLogin = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const loggedInUser = users.find(item => item.username === username && item.password === password);
+    if (loggedInUser) {
+      localStorage.setItem("loggedInUser", loggedInUser.username);
+      const savedUser = localStorage.getItem(`user-${username}`);
+
+      if (savedUser) {
+        const savedData = JSON.parse(savedUser);
+
+        setUser({
+          ...loggedInUser,
+          ...savedData,
+        });
+      } else {
+        setUser(loggedInUser);
+      }
+      setError("");
+    } else {
+      setError("Incorrect username or password");
+    }
+  };
+
+  return (
+    <div className="m-auto">
+      <div className="bg-sage-light text-center w-80 md:w-100 h-105 p-6 m-auto rounded rounded-br-3xl">
+        <Image src="/logo.png" alt="logo" width={80} height={80} className="m-auto" />
+        <h3 className="font-heading text-3xl text-sage-dark">My BookNook</h3>
+        <label className="field text-ink" htmlFor="username">
+          Username:
+        </label>
+        <input
+          className="field bg-cream w-full p-2 rounded-3xl"
+          id="username"
+          placeholder="Enter your username"
+          onChange={handleUsername}
+          value={username}
+        />
+        <label className="field text-ink" htmlFor="password">
+          Password:
+        </label>
+        <input
+          className="field bg-cream w-full p-2 rounded-3xl"
+          id="password"
+          placeholder="Enter your password"
+          type="password"
+          onChange={handlePassword}
+          value={password}
+        />
+        <button className="bg-pink text-[14px] px-2 py-1 mb-1 rounded-3xl cursor-pointer hover:scale-95" onClick={handleLogin}>
+          Log in
+        </button>
+        {error && <p className='text-sm text-peach'>{error}</p>}
+      </div>
+    </div>
+  );
+};
+
+export default Login;
