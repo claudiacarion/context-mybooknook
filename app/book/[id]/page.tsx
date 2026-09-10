@@ -20,7 +20,9 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
       data.authors?.map(author => fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${author.author.key}.json`)) ?? [],
     );
     const authorData = await Promise.all(fetchedAuthors.map(res => res.json()));
-    authors = authorData.map(author => author.name);
+    console.log(authorData)
+    const noRepeatAuthors = authorData.filter((author, index) => index === authorData.findIndex(item => item.name === author.name))
+    authors = noRepeatAuthors.map(author => author.name);
   } catch (error) {
     console.log(error);
   }
@@ -44,10 +46,11 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
               height={360}
               className="w-60 h-90 object-cover m-auto rounded"
             />
+            <h3 className="text-peach font-heading text-[18px]">Author(s)</h3>
             {authors.length > 0 && (
               <div>
                 {authors.map(author => (
-                  <p key={author}>Written by {author}</p>
+                  <p key={author}>{author}</p>
                 ))}
               </div>
             )}
