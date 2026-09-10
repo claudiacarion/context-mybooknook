@@ -14,7 +14,7 @@ const GenreSelector = () => {
   return (
     <div className='my-8'>
       <h2 className='text-peach font-heading text-[24px]'>Favorite Genre</h2>
-      <select value={user!.genre?? ""} onChange={handleChange} className='text-ink w-full rounded rounded-br-2xl md:w-55 bg-sage-light p-2'>
+      <select value={user!.genre?? ""} onChange={handleChange} className='text-ink w-full rounded rounded-br-2xl md:w-55 bg-cream p-2'>
         <option value="">No genre selected</option>
         {genres.map(genre => (
           <option key={genre.value} value={genre.value}>

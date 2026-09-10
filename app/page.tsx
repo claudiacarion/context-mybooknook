@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <div className="text-center">
       {user && (
-        <div className=" bg-cream-transparent rounded rounded-br-3xl p-4 mb-8">
+        <div className="p-4 mb-8">
           <h1 className="text-sage-dark font-heading text-[32px]">
             Hi {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!
           </h1>
