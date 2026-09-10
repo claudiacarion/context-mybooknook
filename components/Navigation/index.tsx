@@ -13,7 +13,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className=" text-sage-mid text-[16px] p-4 justify-center flex gap-4 md:gap-12 sticky top-0 z-50">
+    <nav className=" text-sage-mid text-[14px] md:text-[16px] p-4 justify-center flex gap-4 md:gap-12 sticky top-0 z-50">
       <Link href="/" className="cursor-pointer hover:scale-95 z-10 relative">
         Home
       </Link>
