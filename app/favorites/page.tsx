@@ -14,10 +14,10 @@ const FavoritesPage = () => {
       <div>
         <h3 className="text-peach font-heading text-[24px]">Favorite Books</h3>
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {user?.books &&
-            user.books.map((book, index) => (
+          {user!.books.length > 0 ?
+            user!.books.map((book, index) => (
               <BookCard key={index} id={book.id} title={book.title} author={book.author} cover={book.cover} />
-            ))}
+            )) : <p className='text-ink'>You have no favorited books at the moment.</p>}
         </div>
       </div>
     </>

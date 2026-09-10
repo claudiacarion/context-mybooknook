@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 My BookNook - A Little Corner for Every Story
 
-## Getting Started
+### 🪩 Live Site: https://context-mybooknook.vercel.app/
+**(Test username: jane, password: austin)**
 
-First, run the development server:
+<p align="center">
+  <img src="./screenshots/mbn-mobile.png" width="100" />
+  <img src="./screenshots/mbn-tablet.png" width="200" />
+  <img src="./screenshots/mbn-desktop.png" width="400" /><br/>
+  <img src="./screenshots/mbn-mobile_home.png" width="100" />
+  <img src="./screenshots/mbn-tablet_genre.png" width="200" />
+  <img src="./screenshots/mbn-desktop_favorites.png" width="400" />
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A responsive book discovery and book logging application built with Next.js, TypeScript, the OpenLibrary API, and local storage.  
+
+The application allows usuers to explore books and authors, and save favorite books and favorite genre. User-specific informations is managed through Context, allowing different users to see different content. Local storage in the browser is used to persist relevant user data and allows the user to see saved information available when they return to the application on the same browser.
+
+## ✨ Features
+
+### 🔐 Authentication  
+- Users can log in with a username and password to go to home page
+- The logged-in user remains logged in while navigating between routes
+- Local storage keeps user logged in on refresh
+- The user can log out
+- A different user can log in in the same session  
+
+### 🏠 Home Page
+ 
+- If the user is not logged in, a login form is displayed
+- If the user is logged in, a header with navigation and a book suggestion is displayed
+
+The home page displays a randomly selected book based on the user's set favorite genre. If the user has not a set favorite genre, a random book from a random genre is selected.
+
+### 📖 Genres Page
+- Available genres are displayed
+- Clicking on a category navigates the user to the genre page
+- The genre page displays a maximum of 12 books from that genre
+- Clicking on a book card navigates the user to the book page where more detailed information about the book is displayed
+  - On the detailed book page, the user can favorite a book
+
+### ✍️ Authors Page
+- Authors from the user's set favorite genre are displayed
+  - If the user has not set a favorite genre, a random author from a random genre will be displayed
+- Clicking on an author card navigates the user to the author page where more detailed information about the author is displayed
+
+### ❤️ Favorites Page
+- A dropdown is displayed where the user can set a favorite genre
+- If the user has favorited books, they are displayed
+
+## 🕸 Context
+The application uses Context to manage the currently logged-in user and make their information available throught the application without having to pass it through multiple layers of props.
+
+The UserContext stores a UserType object, or null when no user is logged in.  
+The UserType contains the user's:
+- username
+- password
+- favorite genre
+- favorited books
+
+This allows different parts of the application to react to changes in the user's state. For example, when the user saves a book from the Genre page, the Favorite page will update favorited books through the same context.  
+
+This also allows different users to see different content. Since each user has their own context, the content displayed on the pages will be different.
+
+## 🔀 Dynamic Routing
+The application uses Next.js's built-in file-based routing system for navigation between pages. Dynamic routes are used for the individual book and author pages. Instead of creating a separate page for every book or author, the application uses a dynamic route with the book's/author's ID.
+
+For example, the book page is structured using a dynamic route such as:
+
+```text
+app/
+└── book/
+    └── [id]/
+        └── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The [id] segment allows the same page template to display different books depending on the ID in the URL. When a user clicks on a book, its ID is passed through the URL. The dynamic page then uses this ID to fetch the corresponding book information from the OpenLibrary API. This allows the application to reuse the same page for every book while dynamically displaying the appropriate information for each one.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Technologies
+- Next.js
+- TypeScript
+- Tailwind CSS
+- OpenLibrary API
+- FontAwesome Icon Library
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧐 To view locally
+```bash
+git clone https://github.com/claudiacarion/context-mybooknook.git
+cd context-mybooknook
+npm install
+npm run dev
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Grateful for any feedback or suggestions! Thank you! 🙏

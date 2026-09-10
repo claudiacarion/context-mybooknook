@@ -45,9 +45,13 @@ const Login = () => {
 
   return (
     <div className="m-auto">
-      <form className="bg-sage-light text-center w-80 md:w-100 h-105 p-6 m-auto rounded rounded-br-3xl" onSubmit={handleLogin}>
-        <Image src="/logo.png" alt="logo" width={80} height={80} className="m-auto" />
-        <h3 className="font-heading text-3xl text-sage-dark">My BookNook</h3>
+      <form
+        className="bg-sage-light text-center w-80 md:w-100 h-118 p-6 m-auto rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]
+"
+        onSubmit={handleLogin}>
+        <Image src="/logo.png" alt="logo" width={80} height={80} className="w-24 h-24 m-auto" />
+        <h2 className="text-sage-dark font-heading text-[44px] leading-[0.9] md:leading-tight">My BookNook</h2>
+        <h4 className="text-peach">A Little Corner for Every Story</h4>
         <label className="field text-ink" htmlFor="username">
           Username:
         </label>
@@ -69,10 +73,10 @@ const Login = () => {
           onChange={handlePassword}
           value={password}
         />
-        <button className="bg-pink text-[14px] px-2 py-1 mb-1 rounded-3xl cursor-pointer hover:scale-95">
+        <button className="bg-pink text-[14px] px-2 py-1 mb-1 rounded-3xl cursor-pointer hover:scale-95 shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
           Log in
         </button>
-        {error && <p className='text-sm text-peach'>{error}</p>}
+        {error && <p className="text-sm text-peach">{error}</p>}
       </form>
     </div>
   );
