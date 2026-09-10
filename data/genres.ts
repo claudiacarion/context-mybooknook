@@ -12,6 +12,7 @@ export const genres = [
   { value: "mystery", label: "Mystery" },
   { value: "philosophy", label: "Philosophy" },
   { value: "poetry", label: "Poetry" },
+  { value: "politics", label: "Politics" },
   { value: "psychology", label: "Psychology" },
   { value: "romance", label: "Romance" },
   { value: "science_fiction", label: "Science Fiction" },
