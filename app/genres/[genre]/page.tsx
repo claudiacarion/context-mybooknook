@@ -23,6 +23,7 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
   }
 
   const displayGenre = genre
+    .replace("childrens", "children's")
     .replaceAll("_", " ")
     .split(" ")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -30,8 +31,8 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
 
   return (
     <>
-      <h1 className="text-sage-dark font-heading text-[32px] text-center p-4 mb-2">Books from {displayGenre}</h1>
-      <div className='md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8'>
+      <h1 className="text-sage-dark font-heading text-[32px] text-center p-4 mb-2">{displayGenre} Books</h1>
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
         {books.map(book => (
           <BookCard key={book.id} {...book} />
         ))}

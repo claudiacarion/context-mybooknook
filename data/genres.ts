@@ -1,7 +1,7 @@
 export const genres = [
   { value: "adventure", label: "Adventure" },
   { value: "biography", label: "Biography" },
-  { value: "children", label: "Children" },
+  { value: "childrens", label: "Children's" },
   { value: "classics", label: "Classics" },
   { value: "crime", label: "Crime" },
   { value: "drama", label: "Drama" },

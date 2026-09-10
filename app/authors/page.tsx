@@ -58,15 +58,16 @@ const Authors = () => {
   }, [user]);
 
   const displayGenre = selectedGenre
+    .replace("childrens", "children's")
     .replaceAll("_", " ")
     .split(" ")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-    
+
   return (
     <>
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">
-        Authors from {displayGenre.charAt(0).toUpperCase() + displayGenre.slice(1)}
+        {displayGenre.charAt(0).toUpperCase() + displayGenre.slice(1)} Authors
       </h1>
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
         {authors.map(author => (
