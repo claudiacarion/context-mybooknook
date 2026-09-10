@@ -62,6 +62,7 @@ const Authors = () => {
     .split(" ")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
+    
   return (
     <>
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">
