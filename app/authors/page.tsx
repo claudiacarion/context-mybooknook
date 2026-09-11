@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useUserContext } from "@/contexts/userContext";
 import { genres } from "@/data/genres";
 import AuthorCard from "@/components/AuthorCard";
-import { AuthorCardType, UserContextType } from "@/data/types";
+import { AuthorCardType, UserContextType } from "@/types/types";
 
 type Author = {
   key: string;

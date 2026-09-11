@@ -1,7 +1,7 @@
 "use client";
 import { useUserContext } from "@/contexts/userContext";
 import { useEffect, useState } from "react";
-import { BookCardType, UserContextType } from "@/data/types";
+import { BookCardType, UserContextType } from "@/types/types";
 import { genres } from "@/data/genres";
 import BookCard from "@/components/BookCard";
 
@@ -61,9 +61,7 @@ export default function Home() {
         </div>
       )}
       {loading ? (
-        <h4 className="text-peach font-heading text-[24px] px-6">
-          Let&apos;s see what&apos;s in store for you...
-        </h4>
+        <h4 className="text-peach font-heading text-[24px] px-6">Let&apos;s see what&apos;s in store for you...</h4>
       ) : book ? (
         <>
           <h4 className="text-peach font-heading text-[24px] px-6">
