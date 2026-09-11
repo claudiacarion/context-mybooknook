@@ -37,11 +37,21 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
             id={id}
             title={book.title}
             author={authors}
-            cover={book.covers?.[0] ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-M.jpg` : "/no-image.png"}
+            cover={
+              book.covers?.[0]
+                ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-M.jpg`
+                : "/no-image.png"
+            }
           />
           <div className="p-4 flex flex-col gap-4 my-8 w-85 md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
             <Image
-              src={book.covers?.[0] && book.covers?.[0] !== -1? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-L.jpg` : book.covers?.[0] && book.covers?.[0] === -1? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[1]}-L.jpg` : "/no-image.png"}
+              src={
+                book.covers?.[0] && book.covers?.[0] !== -1
+                  ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-L.jpg`
+                  : book.covers?.[0] && book.covers?.[0] === -1
+                    ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[1]}-L.jpg`
+                    : "/no-image.png"
+              }
               alt={book.title}
               width={240}
               height={360}
