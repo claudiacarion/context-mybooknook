@@ -16,7 +16,7 @@ const LoginWrapper = ({ children }: { children: ReactNode }) => {
         <>
           <Header />
           <Navigation />
-          <div className="my-8 mx-auto grow w-fit md:pt-8 px-2 md:w-4/5 2xl:w-2/3">{children}</div>
+          <div className="my-8 mx-auto grow w-full md:pt-8 px-2 md:w-4/5 2xl:w-2/3">{children}</div>
           <Footer />
         </>
       ) : (
