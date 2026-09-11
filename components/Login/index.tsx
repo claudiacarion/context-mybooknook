@@ -49,8 +49,8 @@ const Login = () => {
         className="bg-sage-light text-center w-80 md:w-100 h-118 p-6 m-auto rounded rounded-br-3xl shadow-[6px_6px_0px_rgba(0,0,0,0.12)]"
         onSubmit={handleLogin}>
         <Image src="/logo.png" alt="logo" width={80} height={80} className="w-24 h-24 m-auto" />
-        <h2 className="text-sage-dark font-heading text-[44px] leading-[0.9] md:leading-tight">My BookNook</h2>
-        <h4 className="text-peach">A Little Corner for Every Story</h4>
+        <h2 className="text-sage-dark font-heading text-[36px] md:text-[44px] leading-[0.9] md:leading-tight">My BookNook</h2>
+        <h4 className="text-peach text-[16px] md:text-[18px]">A Little Corner for Every Story</h4>
         <label className="field text-ink" htmlFor="username">
           Username:
         </label>

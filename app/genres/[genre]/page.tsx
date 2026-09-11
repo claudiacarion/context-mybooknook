@@ -32,11 +32,21 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
   return (
     <>
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4 mb-2">{displayGenre} Books</h1>
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
-        {books.map(book => (
-          <BookCard key={book.id} {...book} />
-        ))}
-      </div>
+      {displayGenre && books.length > 0 ? (
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+          {books.map(book => (
+            <BookCard key={book.id} {...book} />
+          ))}
+        </div>
+      ) : displayGenre && books.length === 0 ? (
+        <h4 className="text-peach font-heading text-[24px] px-6 text-center">
+          Hmm... looks like we don&apos;t have {displayGenre} books. Try another genre.
+        </h4>
+      ) : (
+        <h4 className="text-peach font-heading text-[24px] px-6 text-center">
+          Hmm... looks like our bookshelf is empty at the moment. Try again later.
+        </h4>
+      )}
     </>
   );
 };

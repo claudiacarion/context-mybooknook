@@ -45,7 +45,9 @@ const Authors = () => {
             return {
               id: id,
               name: author.name,
-              photo: fetchedAuthorData.photos ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg` : "/no-image.png",
+              photo: fetchedAuthorData.photos
+                ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg`
+                : "/no-image.png",
             };
           }),
         );
@@ -69,11 +71,17 @@ const Authors = () => {
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">
         {displayGenre.charAt(0).toUpperCase() + displayGenre.slice(1)} Authors
       </h1>
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
-        {authors.map(author => (
-          <AuthorCard key={author.id} {...author} />
-        ))}
-      </div>
+      {displayGenre ? (
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
+          {authors.map(author => (
+            <AuthorCard key={author.id} {...author} />
+          ))}
+        </div>
+      ) : (
+        <h4 className="text-peach font-heading text-[24px] px-6">
+          Hmm... looks like our bookshelf is empty at the moment. Try again later.
+        </h4>
+      )}
     </>
   );
 };

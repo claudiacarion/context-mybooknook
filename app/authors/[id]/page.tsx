@@ -39,7 +39,7 @@ const AuthorPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </>
       ) : (
-        <p className="font-heading text-sage-dark text-center text-[32px] p-4 md:w-1/2 mx-auto mt-8">
+        <p className="font-heading text-sage-dark text-center text-[32px] p-4 mx-auto mt-8">
           Hmm, looks like this author has gone out for a walk.
         </p>
       )}

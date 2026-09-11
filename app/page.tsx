@@ -9,6 +9,7 @@ export default function Home() {
   const { user } = useUserContext() as UserContextType;
   const [book, setBook] = useState<BookCardType | null>(null);
   const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchRandomBook = async () => {
     const genre = user!.genre ? user!.genre : genres[Math.floor(Math.random() * genres.length)].value;
@@ -18,6 +19,8 @@ export default function Home() {
       const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/search.json?subject=${genre}`;
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data);
+      console.log(response);
       const fetchedBook = data.docs[Math.floor(Math.random() * data.docs.length)];
       const bookForCard: BookCardType = {
         id: fetchedBook.key.replace("/works/", ""),
@@ -30,6 +33,8 @@ export default function Home() {
       setBook(bookForCard);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,8 +60,22 @@ export default function Home() {
           <h3 className="text-ink">Ready for new read?</h3>
         </div>
       )}
-      <h4 className="text-peach font-heading text-[24px] px-6">How about this one from the {displayGenre} collection?</h4>
-      {book && <BookCard {...book} />}
+      {loading ? (
+        <h4 className="text-peach font-heading text-[24px] px-6">
+          Let&apos;s see what&apos;s in store for you...
+        </h4>
+      ) : book ? (
+        <>
+          <h4 className="text-peach font-heading text-[24px] px-6">
+            How about this one from the {displayGenre} collection?
+          </h4>
+          <BookCard {...book} />
+        </>
+      ) : (
+        <h4 className="text-peach font-heading text-[24px] px-6">
+          Hmm... looks like our bookshelf is empty at the moment. Try again later.
+        </h4>
+      )}
     </div>
   );
 }
