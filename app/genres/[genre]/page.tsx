@@ -1,5 +1,5 @@
 import BookCard from "@/components/BookCard";
-import { BookCardType, GenreBookType } from "@/data/types";
+import { BookCardType, GenreBookType } from "@/types/types";
 
 const GenrePage = async ({ params }: { params: { genre: string } }) => {
   const { genre } = await params;

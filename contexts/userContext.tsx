@@ -1,6 +1,6 @@
 "use client";
 
-import { SavedUserType, UserContextType, UserType } from "@/data/types";
+import { SavedUserType, UserContextType, UserType } from "@/types/types";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -8,7 +8,7 @@ const UserContext = createContext<UserContextType | null>(null);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserType | null>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     const savedUsername = localStorage.getItem("loggedInUser");
 
     if (savedUsername) {

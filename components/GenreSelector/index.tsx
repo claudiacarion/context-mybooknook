@@ -2,7 +2,7 @@
 
 import { genres } from "@/data/genres";
 import { useUserContext } from "@/contexts/userContext";
-import { UserContextType } from "@/data/types";
+import { UserContextType } from "@/types/types";
 
 const GenreSelector = () => {
   const { user, setUser } = useUserContext() as UserContextType;

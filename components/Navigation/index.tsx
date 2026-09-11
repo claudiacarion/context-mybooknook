@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserContext } from "@/contexts/userContext";
-import { UserContextType } from "@/data/types";
+import { UserContextType } from "@/types/types";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";

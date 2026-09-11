@@ -7,9 +7,6 @@
   <img src="./screenshots/mbn-mobile.png" width="100" />
   <img src="./screenshots/mbn-tablet.png" width="200" />
   <img src="./screenshots/mbn-desktop.png" width="400" /><br/>
-  <img src="./screenshots/mbn-mobile_home.png" width="100" />
-  <img src="./screenshots/mbn-tablet_genre.png" width="200" />
-  <img src="./screenshots/mbn-desktop_favorites.png" width="400" />
 </p>
 
 A responsive book discovery and book logging application built with Next.js, TypeScript, the OpenLibrary API, and local storage.  

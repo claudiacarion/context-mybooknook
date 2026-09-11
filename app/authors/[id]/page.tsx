@@ -1,4 +1,4 @@
-import { DetailedAuthorType } from "@/data/types";
+import { DetailedAuthorType } from "@/types/types";
 import Image from "next/image";
 
 const AuthorPage = async ({ params }: { params: { id: string } }) => {

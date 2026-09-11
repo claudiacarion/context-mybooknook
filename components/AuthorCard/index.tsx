@@ -1,11 +1,11 @@
-import { AuthorCardType } from "@/data/types";
+import { AuthorCardType } from "@/types/types";
 import Link from "next/link";
 import Image from "next/image";
 
 const AuthorCard = ({ id, photo, name }: AuthorCardType) => {
   return (
     <div
-    className="bg-pink
+      className="bg-pink
     rounded
     rounded-br-3xl
     text-center

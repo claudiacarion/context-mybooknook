@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { DetailedBookType } from "@/data/types";
+import { DetailedBookType } from "@/types/types";
 import SaveButton from "@/components/SaveButton";
 
 const BookPage = async ({ params }: { params: { id: string } }) => {
@@ -16,7 +16,7 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
       throw new Error(`Failed to fetch book: ${response.status}`);
     }
     const data: DetailedBookType = await response.json();
-    console.log(data)
+    console.log(data);
     book = data;
     const fetchedAuthors = await Promise.all(
       data.authors?.map(author => fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${author.author.key}.json`)) ?? [],

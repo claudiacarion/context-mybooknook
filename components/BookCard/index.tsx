@@ -1,4 +1,4 @@
-import { BookCardType } from "@/data/types";
+import { BookCardType } from "@/types/types";
 import Link from "next/link";
 import Image from "next/image";
 
