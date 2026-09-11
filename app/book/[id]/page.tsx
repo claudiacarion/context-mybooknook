@@ -40,7 +40,7 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
       ) : (
         book && (
           <>
-            <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 md:w-1/2 mx-auto">{book.title}</h1>
+            <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 lg:w-1/2 mx-auto">{book.title}</h1>
             <SaveButton
               id={id}
               title={book.title}
