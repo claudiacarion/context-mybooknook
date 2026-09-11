@@ -48,7 +48,7 @@ const Navigation = () => {
 
       <div ref={ref} className="relative md:hidden">
         <div className="w-full bg-sage-light pt-5">
-          <button onClick={() => setIsOpen(!isOpen)} className="relative z-20 mx-auto w-full md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="relative z-50 mx-auto w-full md:hidden">
             {isOpen ? <FontAwesomeIcon icon={faCaretUp} /> : <FontAwesomeIcon icon={faCaretDown} />}
           </button>
         </div>
@@ -56,7 +56,7 @@ const Navigation = () => {
           className={`
           absolute
           right-0
-          top-full
+          top-11
           z-20
           flex
           flex-col
@@ -67,8 +67,8 @@ const Navigation = () => {
           bg-sage-light
           text-[16px]
           pt-4
-          transition-all duration-200 ease-in-out
-          ${isOpen ? "max-h-96 translate-y-0 opacity-100" : "pointer-events-none max-h-0 -translate-y-2 opacity-0"}
+          transition-all duration-300 ease-in-out
+          ${isOpen ? "max-h-96 translate-y-0 " : "pointer-events-none max-h-0 -translate-y-2"}
         `}>
           <Link href="/" className="relative z-10 cursor-pointer text-center hover:scale-95" onClick={handleOpenMenu}>
             Home
