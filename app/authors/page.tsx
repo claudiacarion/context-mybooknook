@@ -45,7 +45,7 @@ const Authors = () => {
             return {
               id: id,
               name: author.name,
-              photo: fetchedAuthorData.photos ? `https://covers.openlibrary.org/a/olid/${id}-M.jpg` : "/no-image.png",
+              photo: fetchedAuthorData.photos ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg` : "/no-image.png",
             };
           }),
         );

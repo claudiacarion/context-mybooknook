@@ -25,7 +25,7 @@ const AuthorPage = async ({ params }: { params: { id: string } }) => {
           <h1 className="text-sage-dark text-center font-heading text-[32px] p-4">{author.name}</h1>
           <div className="p-4 flex flex-col gap-2 mb-8">
             <Image
-              src={author.photos ? `https://covers.openlibrary.org/a/olid/${id}-M.jpg` : "/no-image.png"}
+              src={author.photos ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg` : "/no-image.png"}
               alt={author.name}
               width={240}
               height={360}

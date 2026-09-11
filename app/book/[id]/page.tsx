@@ -20,7 +20,6 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
       data.authors?.map(author => fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${author.author.key}.json`)) ?? [],
     );
     const authorData = await Promise.all(fetchedAuthors.map(res => res.json()));
-    console.log(authorData);
     const noRepeatAuthors = authorData.filter(
       (author, index) => index === authorData.findIndex(item => item.name === author.name),
     );
@@ -33,16 +32,16 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
     <>
       {book ? (
         <>
-          <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 w-1/2 mx-auto">{book.title}</h1>
+          <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 md:w-1/2 mx-auto">{book.title}</h1>
           <SaveButton
             id={id}
             title={book.title}
             author={authors}
-            cover={book.covers?.[0] ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-M.jpg` : "/no-image.png"}
+            cover={book.covers?.[0] ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-M.jpg` : "/no-image.png"}
           />
-          <div className="p-4 flex flex-col gap-4 mb-8 bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
+          <div className="p-4 flex flex-col gap-4 my-8 w-85 md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
             <Image
-              src={book.covers?.[0] ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg` : "/no-image.png"}
+              src={book.covers?.[0] && book.covers?.[0] !== -1? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-L.jpg` : book.covers?.[0] && book.covers?.[0] === -1? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[1]}-L.jpg` : "/no-image.png"}
               alt={book.title}
               width={240}
               height={360}

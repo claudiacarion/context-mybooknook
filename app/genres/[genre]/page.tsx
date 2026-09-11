@@ -16,7 +16,7 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
       id: book.key.replace("/works/", ""),
       title: book.title,
       author: book.authors?.map(author => author.name) ?? ["Unknown"],
-      cover: book.cover_id ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg` : "/no-image.png",
+      cover: book.cover_id ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.cover_id}-M.jpg` : "/no-image.png",
     }));
   } catch (error) {
     console.log(error);

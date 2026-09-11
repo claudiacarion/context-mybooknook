@@ -24,7 +24,7 @@ export default function Home() {
         title: fetchedBook.title,
         author: fetchedBook.author_name ?? ["Unknown"],
         cover: fetchedBook.cover_i
-          ? `https://covers.openlibrary.org/b/id/${fetchedBook.cover_i}-M.jpg`
+          ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${fetchedBook.cover_i}-M.jpg`
           : "/no-image.png",
       };
       setBook(bookForCard);
