@@ -1,8 +1,5 @@
 # 📚 My BookNook - A Little Corner for Every Story
 
-### 🪩 Live Site: https://context-mybooknook.vercel.app/
-**(Test username: jane, password: austin)**
-
 <p align="center">
   <img src="./screenshots/mbn-mobile.png" width="100" />
   <img src="./screenshots/mbn-tablet.png" width="200" />
@@ -11,7 +8,16 @@
 
 A responsive book discovery and book logging application built with Next.js, TypeScript, the OpenLibrary API, and local storage.  
 
-The application allows usuers to explore books and authors, and save favorite books and favorite genre. User-specific informations is managed through Context, allowing different users to see different content. Local storage in the browser is used to persist relevant user data and allows the user to see saved information available when they return to the application on the same browser.
+The application allows users to explore books and authors, and save favorite books and favorite genre. User-specific informations is managed through Context, allowing different users to see different content. Local storage in the browser is used to persist relevant user data and allows the user to see saved information available when they return to the application on the same browser.
+
+### 🪩 Live Site: https://context-mybooknook.vercel.app/
+Log in with one of the users below to try the application. Jane has no favorite genre or books set by default, while Mary has Romance as her favourite genre and Frankenstein; or, The Modern Prometheus as a favorited book.
+
+| Username | Password | Genre   | Books          |
+| -------- | -------- | ------- | -------------- |
+| jane | austen | null | null |
+| mary | shelley | romance | Frankenstein; or, The Modern Prometheus |
+
 
 ## ✨ Features
 
