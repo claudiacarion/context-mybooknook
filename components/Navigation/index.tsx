@@ -2,37 +2,113 @@
 
 import { useUserContext } from "@/contexts/userContext";
 import { UserContextType } from "@/data/types";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useState } from "react";
+import { useClickAway } from "@uidotdev/usehooks";
 
 const Navigation = () => {
   const { setUser } = useUserContext() as UserContextType;
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const ref = useClickAway<HTMLDivElement>(() => {
+    setIsOpen(false);
+  });
+
+  const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setUser(null);
+    setIsOpen(false);
+  };
+
+  const handleOpenMenu = () => {
+    setIsOpen(false);
   };
 
   return (
-    <nav className=" text-sage-mid text-[16px] p-4 justify-center flex gap-4 md:gap-12 sticky top-0 z-50">
-      <Link href="/" className="cursor-pointer hover:scale-95 z-10 relative">
-        Home
-      </Link>
-      <Link href="/genres" className="cursor-pointer hover:scale-95 z-10 relative">
-        Genres
-      </Link>
-      <Link href="/authors" className="cursor-pointer hover:scale-95 z-10 relative">
-        Authors
-      </Link>
-      <Link href="/favorites" className="cursor-pointer hover:scale-95 z-10 relative">
-        Favorites
-      </Link>
-      <p onClick={handleClick} className="cursor-pointer hover:scale-95 z-10 relative">
-        Log Out
-      </p>
+    <nav className=" text-sage-mid text-[18px] sticky top-0 z-50">
+      <div className="hidden justify-center items-center gap-4 mt-3 md:flex md:gap-12">
+        <Link href="/" className="cursor-pointer hover:scale-95 z-10 relative">
+          Home
+        </Link>
+        <Link href="/genres" className="cursor-pointer hover:scale-95 z-10 relative">
+          Genres
+        </Link>
+        <Link href="/authors" className="cursor-pointer hover:scale-95 z-10 relative">
+          Authors
+        </Link>
+        <Link href="/favorites" className="cursor-pointer hover:scale-95 z-10 relative">
+          Favorites
+        </Link>
+        <button onClick={handleLogout} className="cursor-pointer hover:scale-95 z-10 relative">
+          Log Out
+        </button>
+      </div>
+
+      <div ref={ref} className="relative md:hidden">
+        <div className="w-full bg-sage-light pt-5">
+          <button onClick={() => setIsOpen(!isOpen)} className="relative z-20 mx-auto w-full md:hidden">
+            {isOpen ? <FontAwesomeIcon icon={faCaretUp} /> : <FontAwesomeIcon icon={faCaretDown} />}
+          </button>
+        </div>
+        <div
+          className={`
+          absolute
+          right-0
+          top-full
+          z-20
+          flex
+          flex-col
+          gap-4
+          w-full
+          overflow-hidden
+          rounded-lg
+          bg-sage-light
+          text-[16px]
+          pt-4
+          transition-all duration-200 ease-in-out
+          ${isOpen ? "max-h-96 translate-y-0 opacity-100" : "pointer-events-none max-h-0 -translate-y-2 opacity-0"}
+        `}>
+          <Link href="/" className="relative z-10 cursor-pointer text-center hover:scale-95" onClick={handleOpenMenu}>
+            Home
+          </Link>
+          <Link
+            href="/genres"
+            className="relative z-10 cursor-pointer text-center hover:scale-95"
+            onClick={handleOpenMenu}>
+            Genres
+          </Link>
+          <Link
+            href="/authors"
+            className="relative z-10 cursor-pointer text-center hover:scale-95"
+            onClick={handleOpenMenu}>
+            Authors
+          </Link>
+          <Link
+            href="/favorites"
+            className="relative z-10 cursor-pointer text-center hover:scale-95"
+            onClick={handleOpenMenu}>
+            Favorites
+          </Link>
+
+          <button onClick={handleLogout} className="relative z-10 cursor-pointer hover:scale-95">
+            Log Out
+          </button>
+        </div>
+      </div>
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
-        className="absolute top-[-8] md:top-[-60] lg:top-[-100] xl:top-[-150] 2xl:top-[-230] left-0 w-full rotate-180 z-0">
+        className={`
+        absolute
+        left-0
+        w-full
+        rotate-180
+        z-0
+        transition-all duration-200 ease-in-out
+        ${isOpen ? "top-50" : "-top-2 md:-top-15 lg:-top-25 xl:-top-37.5 2xl:-top-57.5"}`}>
         <path
           fill="#DDE1CF"
           fillOpacity="1"
