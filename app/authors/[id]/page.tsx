@@ -32,7 +32,7 @@ const AuthorPage = async ({ params }: { params: { id: string } }) => {
             <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 lg:w-1/2 mx-auto">{author.name}</h1>
             <div className="p-4 flex flex-col gap-4 my-8 w-[90%] mx-auto md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
               <Image
-                src={author.photos ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg` : "/no-image.png"}
+                src={author.photos && author.photos[0] !== -1 ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/a/olid/${id}-M.jpg` : "/no-image.png"}
                 alt={author.name}
                 width={240}
                 height={360}
