@@ -73,7 +73,7 @@ export default function Home() {
         </>
       ) : (
         <h4 className="text-peach font-heading text-[24px] px-6">
-          Hmm... looks like our bookshelf is empty at the moment. Try again later.
+          Hmm... looks like our bookshelves are empty at the moment. Try again later.
         </h4>
       )}
     </div>

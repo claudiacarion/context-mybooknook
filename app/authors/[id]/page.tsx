@@ -7,7 +7,7 @@ const AuthorPage = async ({ params }: { params: { id: string } }) => {
   let author: DetailedAuthorType | undefined;
 
   try {
-    const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/authors/${id}.json`;
+    const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/authorss/${id}.json`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Failed to fetch book: ${response.status}`);
@@ -39,9 +39,9 @@ const AuthorPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </>
       ) : (
-        <p className="font-heading text-sage-dark text-center text-[32px] p-4 mx-auto mt-8">
+        <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
           Hmm, looks like this author has gone out for a walk.
-        </p>
+        </h4>
       )}
     </>
   );

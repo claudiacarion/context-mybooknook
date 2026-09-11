@@ -71,14 +71,15 @@ const Authors = () => {
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">
         {displayGenre.charAt(0).toUpperCase() + displayGenre.slice(1)} Authors
       </h1>
-      {displayGenre ? (
+      {displayGenre && authors.length > 0 ? (
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
           {authors.map(author => (
             <AuthorCard key={author.id} {...author} />
           ))}
         </div>
       ) : (
-        <h4 className="text-peach font-heading text-[24px] px-6">
+        <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
+          {" "}
           Hmm... looks like our bookshelf is empty at the moment. Try again later.
         </h4>
       )}

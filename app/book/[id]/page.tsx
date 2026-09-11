@@ -80,9 +80,10 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </>
       ) : (
-        <p className="font-heading text-sage-dark text-center text-[32px] p-4 mx-auto mt-8">
+        <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
+          {" "}
           Sorry, someone is reading this one at the moment.
-        </p>
+        </h4>
       )}
     </>
   );
