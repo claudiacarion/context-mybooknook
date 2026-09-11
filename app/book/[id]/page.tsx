@@ -51,7 +51,7 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
                   : "/no-image.png"
               }
             />
-            <div className="p-4 flex flex-col gap-4 my-8 w-85 mx-auto md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
+            <div className="p-4 flex flex-col gap-4 my-8 w-[90%] mx-auto md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
               <Image
                 src={
                   book.covers?.[0] && book.covers?.[0] !== -1
