@@ -5,7 +5,7 @@ import { UserContextType } from "@/data/types";
 import Link from "next/link";
 
 const Navigation = () => {
-  const { user, setUser } = useUserContext() as UserContextType;
+  const { setUser } = useUserContext() as UserContextType;
 
   const handleClick = () => {
     localStorage.removeItem("loggedInUser");

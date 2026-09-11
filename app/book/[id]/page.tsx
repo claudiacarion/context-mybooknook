@@ -7,6 +7,7 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
 
   let book: DetailedBookType | undefined;
   let authors: string[] = [];
+  let hasError = false;
 
   try {
     const url = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/works/${id}.json`;
@@ -15,6 +16,7 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
       throw new Error(`Failed to fetch book: ${response.status}`);
     }
     const data: DetailedBookType = await response.json();
+    console.log(data)
     book = data;
     const fetchedAuthors = await Promise.all(
       data.authors?.map(author => fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}${author.author.key}.json`)) ?? [],
@@ -26,64 +28,66 @@ const BookPage = async ({ params }: { params: { id: string } }) => {
     authors = noRepeatAuthors.map(author => author.name);
   } catch (error) {
     console.log(error);
+    hasError = true;
   }
 
   return (
     <>
-      {book ? (
-        <>
-          <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 md:w-1/2 mx-auto">{book.title}</h1>
-          <SaveButton
-            id={id}
-            title={book.title}
-            author={authors}
-            cover={
-              book.covers?.[0]
-                ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-M.jpg`
-                : "/no-image.png"
-            }
-          />
-          <div className="p-4 flex flex-col gap-4 my-8 w-85 md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
-            <Image
-              src={
-                book.covers?.[0] && book.covers?.[0] !== -1
-                  ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-L.jpg`
-                  : book.covers?.[0] && book.covers?.[0] === -1
-                    ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[1]}-L.jpg`
-                    : "/no-image.png"
-              }
-              alt={book.title}
-              width={240}
-              height={360}
-              className="w-60 h-90 object-cover m-auto rounded"
-            />
-            {authors.length > 0 && (
-              <div>
-                <h3 className="text-peach font-heading text-[18px]">Author(s)</h3>
-                {authors.map(author => (
-                  <p key={author}>{author}</p>
-                ))}
-              </div>
-            )}
-            {book.first_publish_date && <p>First published: {book.first_publish_date}</p>}
-            {book.description && (
-              <p>{typeof book.description === "string" ? book.description : book.description.value}</p>
-            )}
-            {book.subjects && (
-              <div>
-                <h3 className="text-peach font-heading text-[18px]">Subjects</h3>
-                {book.subjects.slice(0, 3).map(subject => (
-                  <p key={subject}>{subject}</p>
-                ))}
-              </div>
-            )}
-          </div>
-        </>
-      ) : (
+      {hasError || !book?.title ? (
         <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
-          {" "}
           Sorry, someone is reading this one at the moment.
         </h4>
+      ) : (
+        book && (
+          <>
+            <h1 className="text-sage-dark text-center font-heading text-[32px] p-4 md:w-1/2 mx-auto">{book.title}</h1>
+            <SaveButton
+              id={id}
+              title={book.title}
+              author={authors}
+              cover={
+                book.covers?.[0]
+                  ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-M.jpg`
+                  : "/no-image.png"
+              }
+            />
+            <div className="p-4 flex flex-col gap-4 my-8 w-85 md:w-full bg-cream rounded rounded-br-3xl shadow-[4px_4px_0px_rgba(0,0,0,0.12)]">
+              <Image
+                src={
+                  book.covers?.[0] && book.covers?.[0] !== -1
+                    ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[0]}-L.jpg`
+                    : book.covers?.[0] && book.covers?.[0] === -1
+                      ? `${process.env.NEXT_PUBLIC_IMAGE_ENDPOINT}/b/id/${book.covers[1]}-L.jpg`
+                      : "/no-image.png"
+                }
+                alt={book.title}
+                width={240}
+                height={360}
+                className="w-60 h-90 object-cover m-auto rounded"
+              />
+              {authors.length > 0 && (
+                <div>
+                  <h3 className="text-peach font-heading text-[18px]">Author(s)</h3>
+                  {authors.map(author => (
+                    <p key={author}>{author}</p>
+                  ))}
+                </div>
+              )}
+              {book.first_publish_date && <p>First published: {book.first_publish_date}</p>}
+              {book.description && (
+                <p>{typeof book.description === "string" ? book.description : book.description.value}</p>
+              )}
+              {book.subjects && (
+                <div>
+                  <h3 className="text-peach font-heading text-[18px]">Subjects</h3>
+                  {book.subjects.slice(0, 3).map(subject => (
+                    <p key={subject}>{subject}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
+        )
       )}
     </>
   );

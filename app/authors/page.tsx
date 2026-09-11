@@ -18,6 +18,7 @@ const Authors = () => {
   const { user } = useUserContext() as UserContextType;
   const [authors, setAuthors] = useState<AuthorCardType[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getAuthors = async () => {
@@ -54,6 +55,8 @@ const Authors = () => {
         setAuthors(authorCards);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     getAuthors();
@@ -71,7 +74,11 @@ const Authors = () => {
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">
         {displayGenre.charAt(0).toUpperCase() + displayGenre.slice(1)} Authors
       </h1>
-      {displayGenre && authors.length > 0 ? (
+      {loading ? (
+        <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
+          Let&apos;s see what&apos;s in store for you...
+        </h4>
+      ) : displayGenre && authors.length > 0 ? (
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
           {authors.map(author => (
             <AuthorCard key={author.id} {...author} />
@@ -79,7 +86,6 @@ const Authors = () => {
         </div>
       ) : (
         <h4 className="text-peach font-heading text-[24px] px-6 my-8 lg:w-1/2 text-center mx-auto">
-          {" "}
           Hmm... looks like our bookshelf is empty at the moment. Try again later.
         </h4>
       )}
