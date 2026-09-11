@@ -108,7 +108,7 @@ const Navigation = () => {
         rotate-180
         z-0
         transition-all duration-200 ease-in-out
-        ${isOpen ? "top-50" : "-top-2 md:-top-15 lg:-top-25 xl:-top-37.5 2xl:-top-57.5"}`}>
+        ${isOpen ? "top-50" : "-top-2 md:-top-15 lg:-top-25 xl:-top-38 2xl:-top-60"}`}>
         <path
           fill="#DDE1CF"
           fillOpacity="1"
