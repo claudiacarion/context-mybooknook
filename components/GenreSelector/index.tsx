@@ -7,6 +7,9 @@ import { UserContextType } from "@/types/types";
 const GenreSelector = () => {
   const { user, setUser } = useUserContext() as UserContextType;
 
+  console.log(user)
+  console.log(user!.genre)
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUser({ ...user!, genre: e.target.value });
   };

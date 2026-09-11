@@ -6,7 +6,7 @@ export const users: UserType[] = [
   {
     username: "mary",
     password: "shelley",
-    genre: "Romance",
+    genre: "romance",
     books: [
       {
         id: "OL450063W",
