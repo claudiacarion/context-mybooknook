@@ -42,7 +42,7 @@ const GenrePage = async ({ params }: { params: { genre: string } }) => {
           Hmm... looks like this bookshelf is empty at the moment. Try again later.
         </h4>
       ) : books.length > 0 ? (
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+        <div className="md:grid lg:grid-cols-2 xl:grid-cols-3 gap-4 my-8">
           {books.map(book => (
             <BookCard key={book.id} {...book} />
           ))}

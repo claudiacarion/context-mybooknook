@@ -79,7 +79,7 @@ const Authors = () => {
           Let&apos;s see what&apos;s in store for you...
         </h4>
       ) : displayGenre && authors.length > 0 ? (
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:justify-items-center gap-8 my-8">
+        <div className="md:grid lg:grid-cols-2 xl:grid-cols-3 md:justify-items-center gap-8 my-8">
           {authors.map(author => (
             <AuthorCard key={author.id} {...author} />
           ))}
