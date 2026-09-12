@@ -13,7 +13,7 @@ const FavoritesPage = () => {
       <GenreSelector />
       <div className='px-8'>
         <h3 className="text-peach font-heading text-[24px]">Favorite Books</h3>
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="md:grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
           {user!.books.length > 0 ? (
             user!.books.map((book, index) => (
               <BookCard key={index} id={book.id} title={book.title} author={book.author} cover={book.cover} />
