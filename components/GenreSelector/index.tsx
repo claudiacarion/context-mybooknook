@@ -15,7 +15,7 @@ const GenreSelector = () => {
   };
 
   return (
-    <div className="my-8">
+    <div className="my-8 px-8">
       <h2 className="text-peach font-heading text-[24px]">Favorite Genre</h2>
       <select
         value={user!.genre ?? ""}
