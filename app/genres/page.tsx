@@ -7,8 +7,7 @@ const Genres = () => {
       <h1 className="text-sage-dark font-heading text-[32px] text-center p-4">Explore a Genre</h1>
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-10 my-8">
         {genres.map((genre, index) => (
-          <div key={index}>
-            <Link href={`/genres/${genre.value}`}>
+            <Link href={`/genres/${genre.value}`} key={index}>
               <p
                 className="cursor-pointer
                 text-ink
@@ -17,6 +16,8 @@ const Genres = () => {
                 rounded-br-3xl
                 text-center
                 py-4
+                mx-8
+                md:mx-0
                 my-4
                 md:my-0
                 shadow-[4px_4px_0px_rgba(0,0,0,0.12)]
@@ -28,7 +29,6 @@ const Genres = () => {
                 {genre.label}
               </p>
             </Link>
-          </div>
         ))}
       </div>
     </>
